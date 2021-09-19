@@ -16,19 +16,19 @@ TEST(Timer, can_start_stop_resume) {
   });
 
   timer2.sglTimeout.connect([]() { 
-    EventLoop::mainThreadLoop().exit(0); 
+    EventLoop::topLevelLoop().exit(0); 
   });
 
   timer1.start();
   timer2.start();
 
-  EventLoop::mainThreadLoop().exec();
+  EventLoop::topLevelLoop().exec();
   uint32_t elapsed = millis() - startMs;
   ASSERT_NEAR(elapsed, 125, 20);
 }
 
 TEST(EventLoop, can_use_local_event_loops) {
-  EventLoop localLoop(EventLoop::mainThreadLoop());
+  EventLoop localLoop(EventLoop::topLevelLoop());
   Timer timer(10);
   timer.start();
   timer.sglTimeout.connect([&]() { localLoop.exit(1); });

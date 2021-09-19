@@ -48,6 +48,6 @@ void EventLoop::enqueuePrioritized(function<void()> a_event) {
   m_events.insert(0, a_event);
 }
 
-EventLoop& EventLoop::mainThreadLoop() { 
+EventLoop& EventLoop::topLevelLoop() { 
   return m_mainThreadLoop; 
 }

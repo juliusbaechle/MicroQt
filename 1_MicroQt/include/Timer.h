@@ -18,7 +18,7 @@ public:
   bool isSingleShot() const { return m_singleShot; }
 
   void setInterval(int a_intervalMs);
-  int interval() const { return m_intervalMs; }
+  uint32_t interval() const { return m_intervalMs; }
 
 public:
   Signal<> sglTimeout;
@@ -30,7 +30,7 @@ private:
   bool m_active = false;
   bool m_singleShot = false;
 
-  uint64_t m_timeElapsed = 0;
-  uint64_t m_intervalMs = 0;
-  uint64_t m_startMs = 0;
+  uint32_t m_timeElapsed = 0;
+  uint32_t m_intervalMs = 0;
+  uint32_t m_startMs = 0;
 };

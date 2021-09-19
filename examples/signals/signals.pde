@@ -1,6 +1,6 @@
 // Created by Julius B�chle
 
-#include "QArduino.h"
+#include <MicroQt.h>
 
 void print() {
   Serial.println("print");
@@ -34,7 +34,7 @@ void setup() {
   // member functions are object-bound, so you have to pass the object pointer
   Signal<const char*> sglPrintText;
   sglPrintText.connect(&printer, &Printer::printText);
-  sglPrintText.emit("Signals");
+  sglPrintText("Signals");
   
   // you can connect more than one slot, and even mix member and non member functions
   Signal<> sglPrint;

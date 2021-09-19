@@ -4,11 +4,11 @@
 
 Timer::Timer(int a_intervalMs) {
   setInterval(a_intervalMs);
-  EventLoop::mainThreadLoop().sglUpdate.connect(this, &Timer::update);
+  EventLoop::topLevelLoop().sglUpdate.connect(this, &Timer::update);
 }
 
 Timer::~Timer() {
-  EventLoop::mainThreadLoop().sglUpdate.disconnect(this, &Timer::update);
+  EventLoop::topLevelLoop().sglUpdate.disconnect(this, &Timer::update);
 }
 
 void Timer::start(int a_intervalMs) {

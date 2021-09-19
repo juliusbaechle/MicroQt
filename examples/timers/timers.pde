@@ -1,6 +1,6 @@
 // Created by Julius Bächle
 
-#include <QArduino.h>
+#include <MicroQt.h>
 
 void print1() {
   Serial.println("1");
