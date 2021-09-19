@@ -1,0 +1,56 @@
+#######################################
+# Syntax Coloring Map For Test
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Thread		KEYWORD1
+Timer		KEYWORD1
+Scheduler	KEYWORD1
+Signal		KEYWORD1
+Vector		KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+exec		KEYWORD2
+showLoad	KEYWORD2
+
+start		KEYWORD2
+stop		KEYWORD2
+setInterval	KEYWORD2
+setSingleShot	KEYWORD2
+isActive	KEYWORD2
+
+size		KEYWORD2
+begin		KEYWORD2
+end		KEYWORD2
+append		KEYWORD2
+push_back	KEYWORD2
+insert		KEYWORD2
+remove		KEYWORD2
+removeFirst	KEYWORD2
+removeLast	KEYWORD2
+removeAll	KEYWORD2
+clear		KEYWORD2
+contains	KEYWORD2
+indexOf		KEYWORD2
+lastIndexOf	KEYWORD2
+at		KEYWORD2
+
+emit		KEYWORD2
+connect		KEYWORD2
+disconnect	KEYWORD2
+
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
