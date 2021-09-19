@@ -22,10 +22,11 @@ public:
   void enqueue(function<void()> a_event);
   void enqueuePrioritized(function<void()> a_event);
 
-  void processEvents();
-
 public:
-  static EventLoop& mainThreadLoop();
+  static EventLoop& topLevelLoop();
+
+private:
+  void processEvents();
 
 private:
   static LoadMonitor m_loadMonitor;
