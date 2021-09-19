@@ -1,6 +1,5 @@
-Simplify parallel tasks by using non preemptive scheduling and
-use signals to connect static and member functions to use the observer pattern
-
+Signals, Timers and load monitoring EventLoops enable event driven applications for Arduino.
+The Qt-concept of signals & slots as well as event loops was inspiration for this projekt.
 
 Installation
 --------------------------------------------------------------------------------
@@ -16,15 +15,6 @@ You may see a few warning messages as it's built.
 
 To use this library in a sketch, go to the Sketch | Import Library menu and
 select Test.  This will add a corresponding line to the top of your sketch:
-#include <Test.h>
+#include <MicroQt.h>
 
 To stop using this library, delete that line from your sketch.
-
-Using Signals
---------------------------------------------------------------------------------
-
-Using Timers & Threads
---------------------------------------------------------------------------------
-
-Using Vector
---------------------------------------------------------------------------------
