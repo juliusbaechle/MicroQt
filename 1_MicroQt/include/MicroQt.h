@@ -2,8 +2,7 @@
 
 #include <Arduino.h>
 
-#include "Scheduler.h"
+#include "EventLoop.h"
 #include "Timer.h"
-#include "Thread.h"
 #include "Signal.h"
 #include "Vector.h"
