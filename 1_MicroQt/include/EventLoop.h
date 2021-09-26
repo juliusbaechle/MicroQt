@@ -5,16 +5,12 @@
 
 class EventLoop {
 public:
-  EventLoop() {}
-
-  // Creates a synchronizer while running the parent event loop
-  // Use from same thread only
-  EventLoop(EventLoop& a_parent);
-
+  EventLoop();
   ~EventLoop() = default;
 
   int exec();
   void exit(int a_exitCode);
+  bool isRunning() { return !m_exit; }
 
   // Registrierung für zyklische Aufrufe
   Signal<> sglUpdate;
@@ -24,13 +20,16 @@ public:
 
 public:
   static EventLoop& topLevelLoop();
+  static uint8_t currentLoopLevel() { return m_loopStack.size(); }
 
 private:
   void processEvents();
 
 private:
   static LoadMonitor m_loadMonitor;
+  static Vector<EventLoop*> m_loopStack;
+
   Vector<function<void()>> m_events;
-  bool m_exit = false;
+  bool m_exit = true;
   int m_exitCode = 0;
 };

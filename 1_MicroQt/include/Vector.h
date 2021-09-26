@@ -7,8 +7,10 @@ class Vector
 {
 public:
   Vector(uint8_t space = 0);
+  template<size_t N> Vector(const T(&a_arr)[N]);
   ~Vector();
 
+  bool isEmpty() const { return size() == 0; }
   uint8_t size() const;
   T* begin() const;
   T* end() const;
@@ -17,12 +19,17 @@ public:
   Vector& operator<<(T element);
   void push_back(T element);
 
+  template<size_t N>
+  void operator= (const T(&a_arr)[N]);
+
   void insert(uint8_t index, T element);
 
   void remove(uint8_t index);
   void removeFirst(T element);
   void removeLast(T element);
   void removeAll(T element);
+  void removeFirst() { remove(0); }
+  void removeLast() { remove(size() - 1); }
 
   void clear();
 
@@ -35,6 +42,8 @@ public:
   const T& at(uint8_t index) const;
   T& operator[] (uint8_t index);
   const T& operator[] (uint8_t index) const;
+  T& first() { return at(0); }
+  T& last() { return at(size() - 1); }
 
 private:
   T* m_arr = nullptr;
@@ -53,6 +62,15 @@ Vector<T>::Vector(uint8_t space)
   m_arr = new T[space];
   m_space = space;
   m_size = 0;
+}
+
+template<typename T>
+template<size_t N>
+Vector<T>::Vector(const T (&a_arr)[N])
+: Vector(N) 
+{
+  for (const T& el : a_arr)
+    push_back(el);
 }
 
 template<typename T>
@@ -77,6 +95,14 @@ template<typename T>
 T* Vector<T>::end() const
 {
   return m_arr + m_size;
+}
+
+template<typename T>
+template<size_t N>
+void Vector<T>::operator= (const T(&a_arr)[N]) {
+  clear();
+  for (const T& el : a_arr)
+    push_back(el);
 }
 
 template<typename T>

@@ -1,28 +1,34 @@
 ﻿#include "EventLoop.h"
 #include <Arduino.h>
+#include <assert.h>
 
+Vector<EventLoop*> EventLoop::m_loopStack ({ new EventLoop() });
 LoadMonitor EventLoop::m_loadMonitor;
-EventLoop m_mainThreadLoop;
 
-EventLoop::EventLoop(EventLoop& a_parent) {
-  sglUpdate.connect([&]() {
-    a_parent.sglUpdate();
-    a_parent.processEvents();
-  });
+EventLoop::EventLoop() {
+  if (!m_loopStack.isEmpty()) {
+    EventLoop& parent = *m_loopStack.last();
+    sglUpdate.connect([&]() {
+      parent.sglUpdate();
+      parent.processEvents();
+    });
+  }
+
+  m_loopStack << this;
 }
 
 int EventLoop::exec() {
+  m_exit = false;
   while (!m_exit) {
     uint32_t start = millis();
     sglUpdate();
     processEvents();
+    m_loadMonitor.update(millis() - start, 2);
     delay(1);
-    m_loadMonitor.update(millis() - start, 3);
-
-    delay(3);
   }
-    
-  m_exit = false;
+
+  if(m_loopStack.size() > 1)
+    m_loopStack.removeLast();
   return m_exitCode;
 }
 
@@ -49,5 +55,6 @@ void EventLoop::enqueuePrioritized(function<void()> a_event) {
 }
 
 EventLoop& EventLoop::topLevelLoop() { 
-  return m_mainThreadLoop; 
+  assert(!m_loopStack.isEmpty());
+  return *m_loopStack.first();
 }
