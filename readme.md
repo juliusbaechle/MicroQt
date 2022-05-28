@@ -1,15 +1,11 @@
 Signals, Timers and load monitoring EventLoops enable event driven applications for Arduino.
-The Qt-concept of signals & slots as well as event loops was inspiration for this projekt.
+The Qt-concept of signals & slots was inspiration for this projekt.
 
-Installation
---------------------------------------------------------------------------------
-
+## Installation
 To install this library, just place this entire folder as a subfolder in your
 Arduino/lib/targets/libraries folder.
 
-Building
---------------------------------------------------------------------------------
-
+## Building
 After this library is installed, you just have to start the Arduino application.
 You may see a few warning messages as it's built.
 
