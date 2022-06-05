@@ -1,6 +1,5 @@
 ﻿#include "Timer.h"
 #include "EventLoop.h"
-#include <Arduino.h>
 
 Timer::Timer(int a_intervalMs) {
   setInterval(a_intervalMs);

@@ -1,23 +1,48 @@
-cmake_minimum_required(VERSION 3.10)
-
+cmake_minimum_required(VERSION 3.16)
 set(PROJECT "MicroQt")
-project("${PROJECT}_Project" VERSION 0.0.1 LANGUAGES CXX)
+project("${PROJECT}" VERSION 0.0.0 LANGUAGES CXX)
 
-# Global CMake variables are set here
-set(CMAKE_CXX_STANDARD              11)
-set(CMAKE_CXX_STANDARD_REQUIRED     ON)
-set(CMAKE_CXX_EXTENSIONS            OFF)
+set(LIBRARY_HEADERS     
+	"MicroQt/Callbacks.h"
+	"MicroQt/EventLoop.h"
+	"MicroQt/LoadMonitor.h"
+	"MicroQt/Signal.h"
+	"MicroQt/Timer.h"
+	"MicroQt/Vector.h"
+) 
 
-# Options for generating/building
-option(UNIT_TESTS	"Use Unit Tests"	ON)
+set(LIBRARY_SOURCES     
+	"MicroQt/EventLoop.cpp"	
+	"MicroQt/LoadMonitor.cpp"
+	"MicroQt/Timer.cpp"
+)
 
-set(LIBRARY_MICROQT "1_MicroQt")
-add_subdirectory(1_MicroQt)
+add_library(${PROJECT} INTERFACE ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
+target_include_directories(${PROJECT} INTERFACE "MicroQt")
 
-if(UNIT_TESTS)		
-	set(gtest_force_shared_crt ON CACHE BOOL "Use MDd for googletest" FORCE)
-	add_subdirectory(external/googletest)
+
+option(ENABLE_TESTS "Builds MicroQt Tests" OFF)
+if(ENABLE_TESTS)						
+	set(TEST_HEADERS     
+		"Tests/ArduinoMock.h"
+		"Tests/MicroQt_Tests.h"
+	) 
+
+	set(TEST_SOURCES     
+		"Tests/ArduinoMock.cpp"
+		"Tests/main.cpp"
+	)
 	
-	set(APP_TEST "2_Unit_Tests")
-	add_subdirectory(2_Unit_Tests)
+	if(MSVC)
+		add_definitions(/FIArduinoMock.h)
+	else()
+		# GCC or Clang
+		add_definitions(-include "ArduinoMock.h")
+	endif()
+
+	set(APP_TESTS ${PROJECT}_Tests)
+	add_executable(${APP_TESTS} ${TEST_HEADERS} ${TEST_SOURCES} ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
+	target_include_directories(${APP_TESTS} PUBLIC "Tests")
+	target_link_libraries(${APP_TESTS} PUBLIC ${PROJECT})
+	target_compile_features(${APP_TESTS} PUBLIC cxx_std_11)
 endif()

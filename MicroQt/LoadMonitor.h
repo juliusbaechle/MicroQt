@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Arduino.h>
-
 class LoadMonitor {
 public:
   void update(int a_busyMs, int a_idleMs);

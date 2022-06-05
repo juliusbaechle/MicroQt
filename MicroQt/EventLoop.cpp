@@ -1,5 +1,4 @@
 ﻿#include "EventLoop.h"
-#include <Arduino.h>
 #include <assert.h>
 
 Vector<EventLoop*> EventLoop::m_loopStack ({ new EventLoop() });

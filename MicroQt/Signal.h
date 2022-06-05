@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector.h"
+#include "Function.h"
 #include "Callbacks.h"
 
 template<typename ... Args>

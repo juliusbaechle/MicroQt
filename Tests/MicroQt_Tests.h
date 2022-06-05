@@ -1,6 +1,7 @@
 #pragma once
 
-#include <Arduino.h>
+#include <assert.h>
+#include <ArduinoMock.h>
 #include "EventLoop.h"
 #include "Timer.h"
 
@@ -19,7 +20,7 @@ private:
 
 const char arr[] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', 0 };
 
-TEST(Timer, can_start_stop_resume) {
+void testTimers() {
   Timer timer1(25);
   Timer timer2(65);
 
@@ -39,10 +40,10 @@ TEST(Timer, can_start_stop_resume) {
 
   EventLoop::topLevelLoop().exec();
   uint32_t elapsed = millis() - startMs;
-  ASSERT_NEAR(elapsed, 125, 20);
+  assert(130 < elapsed && elapsed < 170);
 }
 
-TEST(EventLoop, can_use_local_event_loops) {
+void testEventLoops() {
   Timer timer;
   timer.start(10);
 
@@ -55,5 +56,5 @@ TEST(EventLoop, can_use_local_event_loops) {
     EventLoop::topLevelLoop().exit(1);
   });
 
-  ASSERT_EQ(EventLoop::topLevelLoop().exec(), 1);
+  assert(EventLoop::topLevelLoop().exec() == 1);
 }
