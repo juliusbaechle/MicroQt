@@ -8,7 +8,7 @@ set(LIBRARY_HEADERS
 	"MicroQt/LoadMonitor.h"
 	"MicroQt/Signal.h"
 	"MicroQt/Timer.h"
-	"MicroQt/Vector.h"
+	"MicroQt/vector.h"
 ) 
 
 set(LIBRARY_SOURCES     

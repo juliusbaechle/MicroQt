@@ -4,21 +4,21 @@
 #include <ArduinoMock.h>
 #include "EventLoop.h"
 #include "Timer.h"
+using namespace MicroQt;
 
-template<typename T>
-struct initializer_list {
-  template<size_t N>
-  initializer_list(const T (&a_arr) [N]) {
-    size = N;
-    m_arr = a_arr;
-  }
 
-private:
-  const T* m_arr;
-  uint16_t size;
-};
+void testSignals() {
+  Signal<int> signal;
+  int i = 0;
 
-const char arr[] = { 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', 0 };
+  uint32_t id = signal.connect([&](auto a_i) { i = a_i; });
+  signal(3);
+  assert(i == 3);
+
+  signal.disconnect(id);
+  signal(2);
+  assert(i == 3);
+}
 
 void testTimers() {
   Timer timer1(25);
@@ -31,14 +31,14 @@ void testTimers() {
   });
 
   timer2.sglTimeout.connect([]() { 
-    EventLoop::topLevelLoop().exit(0); 
+    EventLoop::mainLoop().exit(0); 
   });
 
   uint32_t startMs = millis();
   timer1.start();
   timer2.start();
 
-  EventLoop::topLevelLoop().exec();
+  EventLoop::mainLoop().exec();
   uint32_t elapsed = millis() - startMs;
   assert(130 < elapsed && elapsed < 170);
 }
@@ -53,8 +53,8 @@ void testEventLoops() {
       ? localLoop1.exit(1)
       : localLoop1.exec();
 
-    EventLoop::topLevelLoop().exit(1);
+    EventLoop::mainLoop().exit(1);
   });
 
-  assert(EventLoop::topLevelLoop().exec() == 1);
+  assert(EventLoop::mainLoop().exec() == 1);
 }

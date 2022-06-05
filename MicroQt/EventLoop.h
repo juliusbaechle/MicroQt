@@ -3,33 +3,35 @@
 #include "Signal.h"
 #include "LoadMonitor.h"
 
-class EventLoop {
-public:
-  EventLoop();
-  ~EventLoop() = default;
+namespace MicroQt {
+  class EventLoop {
+  public:
+    EventLoop();
+    ~EventLoop();
 
-  int exec();
-  void exit(int a_exitCode);
-  bool isRunning() { return !m_exit; }
+    int exec();
+    void exit(int a_exitCode);
+    bool isRunning() { return !m_exit; }
 
-  // Registrierung für zyklische Aufrufe
-  Signal<> sglUpdate;
+    static void enqueueEvent(function<void()> a_event) { mainLoop().m_events.push_back(a_event); }
 
-  void enqueue(function<void()> a_event);
-  void enqueuePrioritized(function<void()> a_event);
+    static uint32_t registerTask(function<void()> a_function) { return mainLoop().m_taskUpdate.connect(a_function); }
+    static void unregisterTask(uint32_t a_connection) { return mainLoop().m_taskUpdate.disconnect(a_connection); }
 
-public:
-  static EventLoop& topLevelLoop();
-  static uint8_t currentLoopLevel() { return m_loopStack.size(); }
+  public:
+    static EventLoop& mainLoop();
+    static uint8_t currentLoopLevel() { return m_loopStack.size(); }
 
-private:
-  void processEvents();
+  private:
+    void processEvents();
 
-private:
-  static LoadMonitor m_loadMonitor;
-  static Vector<EventLoop*> m_loopStack;
+  private:
+    static LoadMonitor m_loadMonitor;
+    static vector<EventLoop*> m_loopStack;
 
-  Vector<function<void()>> m_events;
-  bool m_exit = true;
-  int m_exitCode = 0;
-};
+    Signal<> m_taskUpdate;
+    vector<function<void()>> m_events;
+    bool m_exit = true;
+    int m_exitCode = 0;
+  };
+}

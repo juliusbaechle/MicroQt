@@ -1,13 +1,14 @@
 ﻿#include "Timer.h"
 #include "EventLoop.h"
+using namespace MicroQt;
 
 Timer::Timer(int a_intervalMs) {
   setInterval(a_intervalMs);
-  EventLoop::topLevelLoop().sglUpdate.connect(this, &Timer::update);
+  m_connectionId = EventLoop::mainLoop().registerTask([&]() { update(); });
 }
 
 Timer::~Timer() {
-  EventLoop::topLevelLoop().sglUpdate.disconnect(this, &Timer::update);
+  EventLoop::mainLoop().unregisterTask(m_connectionId);
 }
 
 void Timer::start(int a_intervalMs) {
