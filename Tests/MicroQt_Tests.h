@@ -49,7 +49,6 @@ void testSignals() {
 
 void testTimers() {
   Timer timer1(125);
-  timer1.setSingleShot(true);
   timer1.sglTimeout.connect([&]() { eventLoop.exit(1); });
   timer1.start();
 
@@ -63,21 +62,6 @@ void testTimers() {
 
   eventLoop.exec();
   assert(counter == 4);
-}
-
-void testTimerStartStop() {
-  int periodicCounter = 0;
-  Timer periodicTimer(100);
-  periodicTimer.sglTimeout.connect([&]() { periodicCounter++; });
-  periodicTimer.start();
-
-  Timer singleShotTimer(150);
-  singleShotTimer.setSingleShot(true);
-  singleShotTimer.sglTimeout.connect([&]() { eventLoop.exit(1); });
-  singleShotTimer.start();
-
-  eventLoop.exec();
-  assert(periodicCounter == 3);
 }
 
 void testSynchronizer() {
