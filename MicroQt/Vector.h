@@ -1,47 +1,39 @@
 #pragma once
 
+#include <vector>
+#include <initializer_list>
+
 namespace MicroQt {
   template<typename T>
-  class vector {
+  class Vector {
   public:
-    vector(uint8_t space = 0);
-    template<size_t N> vector(const T(&a_arr)[N]);
-    ~vector();
+    Vector(uint8_t space = 0);
+    ~Vector() { delete[] m_arr; }
 
-    bool isEmpty() const { return size() == 0; }
-    uint8_t size() const;
-    T* begin() const;
-    T* end() const;
+    uint8_t size() const { return m_size; }
+    bool isEmpty() const { return m_size == 0; }
 
-    void append(T element);
-    vector& operator<<(T element);
-    void push_back(T element);
+    T* begin() const { return m_arr; }
+    T* end() const { return m_arr + sizeof(T) * m_size; }
 
-    template<size_t N>
-    void operator= (const T(&a_arr)[N]);
+    bool contains(const T& element) const;
+    uint8_t indexOf(const T& element, uint8_t from = 0) const;
 
+    T& operator[] (uint8_t index);
+    const T& at(uint8_t index) const;
+
+    bool operator== (const Vector& vector);
+
+    void append(const T& element);
+    Vector& operator<<(const T& element);
+    Vector& operator+=(const T& element) { return operator<<(element); }
+    void push_back(const T& element) { append(element); }
     void insert(uint8_t index, T element);
 
-    void remove(uint8_t index);
-    void removeFirst(T element);
-    void removeLast(T element);
-    void removeAll(T element);
-    void removeFirst() { remove(0); }
-    void removeLast() { remove(size() - 1); }
-
+    void removeAll(const T& element);
+    void removeAt(uint8_t index);
+    T take(uint8_t index);
     void clear();
-
-    bool contains(T element) const;
-    uint8_t indexOf(T element, uint8_t from = 0) const;
-    uint8_t lastIndexOf(T element) const;
-    uint8_t lastIndexOf(T element, uint8_t from) const;
-
-    T& at(uint8_t index);
-    const T& at(uint8_t index) const;
-    T& operator[] (uint8_t index);
-    const T& operator[] (uint8_t index) const;
-    T& first() { return at(0); }
-    T& last() { return at(size() - 1); }
 
   private:
     T* m_arr = nullptr;

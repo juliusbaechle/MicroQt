@@ -3,17 +3,20 @@ set(PROJECT "MicroQt")
 project("${PROJECT}" VERSION 0.0.0 LANGUAGES CXX)
 
 set(LIBRARY_HEADERS     
-	"MicroQt/Callbacks.h"
 	"MicroQt/EventLoop.h"
 	"MicroQt/LoadMonitor.h"
 	"MicroQt/Signal.h"
+	"MicroQt/Signal.hpp"
+	"MicroQt/Synchronizer.h"
 	"MicroQt/Timer.h"
-	"MicroQt/vector.h"
+	"MicroQt/Vector.h"
+	"MicroQt/Vector.hpp"
 ) 
 
 set(LIBRARY_SOURCES     
 	"MicroQt/EventLoop.cpp"	
 	"MicroQt/LoadMonitor.cpp"
+	"MicroQt/Synchronizer.cpp"	
 	"MicroQt/Timer.cpp"
 )
 

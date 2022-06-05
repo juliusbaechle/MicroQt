@@ -1,15 +1,15 @@
 ﻿#pragma once
 
 #include "Signal.h"
-#include "EventLoop.h"
 
 namespace MicroQt {
   class Timer {
   public:
-    Timer(int a_intervalMs = -1);
+    Timer(uint32_t a_intervalMs = 0);
     ~Timer();
 
-    void start(int a_intervalMs = -1);
+    void start();
+    void start(uint32_t a_intervalMs);
     void resume();
     void stop();
 
@@ -18,7 +18,7 @@ namespace MicroQt {
     void setSingleShot(bool a_singleShot) { m_singleShot = a_singleShot; }
     bool isSingleShot() const { return m_singleShot; }
 
-    void setInterval(int a_intervalMs);
+    void setInterval(uint32_t a_intervalMs) { m_intervalMs = a_intervalMs; }
     uint32_t interval() const { return m_intervalMs; }
 
   public:

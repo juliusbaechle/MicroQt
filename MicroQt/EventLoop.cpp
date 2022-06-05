@@ -22,7 +22,7 @@ void EventLoop::update() {
 void EventLoop::processEvents() {
   while (m_events.size()) {
     auto event = m_events.at(0);
-    m_events.remove(0);
+    m_events.removeAt(0);
     event();
   }
 }

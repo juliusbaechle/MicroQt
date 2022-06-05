@@ -14,8 +14,8 @@ namespace MicroQt {
 
   private:
     uint32_t m_lastConnectionId = 0;
-    vector<uint32_t> m_connectionIds;
-    vector<function<void(Args ...)>> m_callbacks;
+    Vector<uint32_t> m_connectionIds;
+    Vector<function<void(Args ...)>> m_callbacks;
   };
 
   #include "Signal.hpp"

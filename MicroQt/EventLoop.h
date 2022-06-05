@@ -24,7 +24,7 @@ namespace MicroQt {
   private:
     LoadMonitor m_loadMonitor;
     Signal<> m_taskUpdate;
-    vector<function<void()>> m_events;
+    Vector<function<void()>> m_events;
     bool m_exit = true;
     int m_exitCode = 0;
   };

@@ -22,6 +22,6 @@ uint32_t Signal<Args ...>::connect(function<void(Args ...)> a_func) {
 template<typename ... Args>
 void Signal<Args ...>::disconnect(uint32_t a_connectionId) {
   uint8_t index = m_connectionIds.indexOf(a_connectionId);
-  m_connectionIds.remove(index);
-  m_callbacks.remove(index);
+  m_connectionIds.removeAt(index);
+  m_callbacks.removeAt(index);
 }
