@@ -4,5 +4,5 @@
 int main() {
   testSignals();
   testTimers();
-  testEventLoops();
+  testSynchronizer();
 }

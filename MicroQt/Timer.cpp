@@ -4,11 +4,11 @@ using namespace MicroQt;
 
 Timer::Timer(int a_intervalMs) {
   setInterval(a_intervalMs);
-  m_connectionId = EventLoop::mainLoop().registerTask([&]() { update(); });
+  m_connectionId = eventLoop.registerTask([&]() { update(); });
 }
 
 Timer::~Timer() {
-  EventLoop::mainLoop().unregisterTask(m_connectionId);
+  eventLoop.unregisterTask(m_connectionId);
 }
 
 void Timer::start(int a_intervalMs) {

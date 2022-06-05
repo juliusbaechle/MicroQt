@@ -31,30 +31,29 @@ void testTimers() {
   });
 
   timer2.sglTimeout.connect([]() { 
-    EventLoop::mainLoop().exit(0); 
+    eventLoop.exit(0); 
   });
 
   uint32_t startMs = millis();
   timer1.start();
   timer2.start();
 
-  EventLoop::mainLoop().exec();
+  eventLoop.exec();
   uint32_t elapsed = millis() - startMs;
   assert(130 < elapsed && elapsed < 170);
 }
 
-void testEventLoops() {
-  Timer timer;
-  timer.start(10);
+#include "Synchronizer.h"
+void testSynchronizer() {
+  Synchronizer synchronizer;
+  eventLoop.enqueueEvent([&]() {
+    eventLoop.enqueueEvent([&]() {
+      synchronizer.exit(1);
+    });
 
-  EventLoop localLoop1;
-  timer.sglTimeout.connect([&]() { 
-    localLoop1.isRunning()
-      ? localLoop1.exit(1)
-      : localLoop1.exec();
-
-    EventLoop::mainLoop().exit(1);
+    int i = synchronizer.exec();
+    eventLoop.exit(i);
   });
 
-  assert(EventLoop::mainLoop().exec() == 1);
+  assert(eventLoop.exec() == 1);
 }
