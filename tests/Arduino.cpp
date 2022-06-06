@@ -40,4 +40,5 @@ public:
   }
 };
 
-ISerial& Serial = StdOut();
+StdOut stdOut;
+ISerial& Serial = stdOut;
