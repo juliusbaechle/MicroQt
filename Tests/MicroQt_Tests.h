@@ -2,9 +2,7 @@
 
 #include <assert.h>
 #include <ArduinoMock.h>
-#include "Timer.h"
-#include "EventLoop.h"
-#include "Synchronizer.h"
+#include "MicroQt.h"
 using namespace MicroQt;
 
 void testVector() {
