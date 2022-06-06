@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <initializer_list>
+#include <Arduino.h>
 
 namespace MicroQt {
   template<typename T>

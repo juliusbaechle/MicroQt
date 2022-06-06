@@ -1,7 +1,6 @@
 #pragma once
 
 #include <assert.h>
-#include <ArduinoMock.h>
 #include "MicroQt.h"
 using namespace MicroQt;
 

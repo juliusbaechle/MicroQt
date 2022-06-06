@@ -2,6 +2,7 @@
 
 #include "Vector.h"
 #include "Function.h"
+#include <Arduino.h>
 
 namespace MicroQt {
   template<typename ... Args>

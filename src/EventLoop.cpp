@@ -1,4 +1,5 @@
 ﻿#include "EventLoop.h"
+#include <Arduino.h>
 #include <assert.h>
 using namespace MicroQt;
 

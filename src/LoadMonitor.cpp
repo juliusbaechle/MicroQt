@@ -1,4 +1,5 @@
 #include "LoadMonitor.h"
+#include <Arduino.h>
 
 void LoadMonitor::update(int a_busyMs, int a_idleMs) {
   m_sumBusyMs += a_busyMs;

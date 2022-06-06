@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "Signal.h"
+#include <Arduino.h>
 
 namespace MicroQt {
   class Timer {

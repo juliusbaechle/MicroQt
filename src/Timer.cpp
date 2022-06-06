@@ -37,9 +37,11 @@ void Timer::update() {
   if (!m_active) return;
   
   if (m_timeElapsed + (millis() - m_startMs) >= m_intervalMs) {
-    m_singleShot
-      ? m_active = false
-      : start();
+    if (m_singleShot) {
+      m_active = false;
+    } else {
+      start();
+    }
     sglTimeout();
   }
 }
