@@ -36,6 +36,9 @@ if(ENABLE_TESTS)
 		"Tests/main.cpp"
 	)
 	
+	source_group("MicroQt" FILES ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
+	source_group("Tests" FILES ${TEST_HEADERS} ${TEST_SOURCES})
+	
 	if(MSVC)
 		add_definitions(/FIArduinoMock.h)
 	else()
