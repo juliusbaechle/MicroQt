@@ -19,8 +19,8 @@ namespace MicroQt {
     void setSingleShot(bool a_singleShot) { m_singleShot = a_singleShot; }
     bool isSingleShot() const { return m_singleShot; }
 
-    void setInterval(uint32_t a_intervalMs) { m_intervalMs = a_intervalMs; }
-    uint32_t interval() const { return m_intervalMs; }
+    void setIntervalMs(uint32_t a_intervalMs) { m_intervalMs = a_intervalMs; }
+    uint32_t intervalMs() const { return m_intervalMs; }
 
   public:
     Signal<> sglTimeout;

@@ -19,7 +19,7 @@ void Timer::start() {
 }
 
 void Timer::start(uint32_t a_intervalMs) {
-  setInterval(a_intervalMs);
+  m_intervalMs = a_intervalMs;
   start();
 }
 

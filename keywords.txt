@@ -39,8 +39,8 @@ start			KEYWORD2
 stop			KEYWORD2
 resume			KEYWORD2
 isActive		KEYWORD2
-setInterval		KEYWORD2
-interval		KEYWORD2
+setIntervalMs	KEYWORD2
+intervalMs		KEYWORD2
 setSingleShot	KEYWORD2
 isSingleShot	KEYWORD2
 sglTimeout		KEYWORD2
