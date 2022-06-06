@@ -1,4 +1,6 @@
 [![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/juliusbaechle/MicroQt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/juliusbaechle/MicroQt/alerts/)
+[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/juliusbaechle/MicroQt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/juliusbaechle/MicroQt/context:cpp)
 
 Signals, Timers and load monitoring EventLoops enable event driven applications for Arduino.
 The Qt-concept of signals & slots was inspiration for this projekt.
