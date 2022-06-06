@@ -17,7 +17,7 @@ void EventLoop::update() {
   m_taskUpdate();
   processEvents();
   m_loadMonitor.update(millis() - start, 1);
-  delay(5);
+  delay(1);
 }
 
 void EventLoop::processEvents() {

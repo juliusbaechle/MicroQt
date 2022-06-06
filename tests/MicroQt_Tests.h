@@ -5,6 +5,7 @@
 using namespace MicroQt;
 
 void testVector() {
+  Serial.println("testVector ...");
   Vector<uint8_t> vector;
   vector.append(1);
   vector << 2 << 3;
@@ -32,6 +33,7 @@ void testVector() {
 }
 
 void testSignals() {
+  Serial.println("testSignals ...");
   Signal<int> signal;
   int i = 0;
 
@@ -44,8 +46,9 @@ void testSignals() {
   assert(i == 3);
 }
 
-void testTimers() {
-  Timer timer1(125);
+void testTimers() {  
+  Serial.println("testTimers ...");
+  Timer timer1(140);
   timer1.sglTimeout.connect([&]() { eventLoop.exit(1); });
   timer1.start();
 
@@ -62,6 +65,7 @@ void testTimers() {
 }
 
 void testSynchronizer() {
+  Serial.println("testSynchronizer ...");
   Synchronizer synchronizer;
   eventLoop.enqueueEvent([&]() {
     eventLoop.enqueueEvent([&]() {

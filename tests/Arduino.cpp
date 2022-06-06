@@ -30,6 +30,14 @@ public:
   void println(const char* a_text) override {
     std::cout << a_text << std::endl;
   }
+
+  void println(int a_number) override {
+    std::cout << a_number << std::endl;
+  }
+
+  void println() override {
+    std::cout << std::endl;
+  }
 };
 
 ISerial& Serial = StdOut();
