@@ -1,3 +1,5 @@
+[![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml)
+
 Signals, Timers and load monitoring EventLoops enable event driven applications for Arduino.
 The Qt-concept of signals & slots was inspiration for this projekt.
 
