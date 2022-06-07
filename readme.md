@@ -73,18 +73,18 @@ void loop() {
 
 ## Contributing
 
-If you want to contribute to this project:
+### How To Contribute 
 - Report bugs and errors
 - Ask for enhancements
 - Create issues and pull requests
 - Tell others about this library
 - Contribute new protocols
 
-Please follow these guidlines:
+### Contributing Guidelines
  - Be friendly: It's my first public library and I've put in a lot of time and work, so please be patient.
  - Use reasonable titles: refrain from using overly long or capitalized titles
  - Be detailed: refrain from mentioning code problems without sharing your source code 
    and always give information regarding your board and version of the library
 
-ToDo list:
+### ToDo List
 - Refactor the Vector-Class while preserving its interface. The current implementation is very inefficient.
