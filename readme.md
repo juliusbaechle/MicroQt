@@ -1,7 +1,6 @@
 # MicroQt Library 
-[![Unit Tests](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml)
-[![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml)
-[![Total Alerts](https://img.shields.io/lgtm/alerts/g/juliusbaechle/MicroQt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/juliusbaechle/MicroQt/alerts/)
+[![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml)
+[![Unit Tests](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml)
 [![Language Grade](https://img.shields.io/lgtm/grade/cpp/g/juliusbaechle/MicroQt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/juliusbaechle/MicroQt/context:cpp)
 
 Library that enables event driven applications on the Arduino platform. 
@@ -12,7 +11,7 @@ This is realized by load monitoring event loops, timers and signals similar to t
 1. In the Arduino IDE, navigate to Sketch > Include Library > Manage Libraries
 2. Then the Library Manager will open and you will find a list of libraries that are already installed or ready for installation.
 3. Then search for MicroQt using the search bar.
-4. Click on the text area and then select the specific version and install it.
+4. Click on the text area and then select the specific version and install it. 
 
 ### Second Method - Manual Installation
 1. Navigate to the [Releases page](https://github.com/juliusbaechle/MicroQt/releases).
@@ -32,7 +31,11 @@ This is realized by load monitoring event loops, timers and signals similar to t
   themselves, but you can also register your own tasks, such as polling for button state changes.
   In addition, you can enqueue events whose execution is delayed until the control returns to the event loop.
   Since they block the event loop, it is important that tasks and events can be processed quickly.
-  The event loop may regularly print the CPU and RAM utilization to get an overview of the current load.
+  
+- ### Load Monitoring
+  The current utilization of CPU and RAM can be displayed at regular user-defined intervals.  
+  The interval can be set by eventLoop.setLogIntervalMs(...) and disabled by setting it to 0.  
+  The current load is printed on the serial port as follows: ``` CPU Load: 11% | RAM Load: 22% (467 of 2048 bytes) ```
 
 - ### Timers
   Timers are used to call functions periodically or once after a specified interval. 
@@ -68,7 +71,6 @@ void setup() {
 }
 
 void loop() {
-  eventLoop.setLogIntervalMs(2000);  // 0 deactivates it
   eventLoop.exec();
 }
 ```

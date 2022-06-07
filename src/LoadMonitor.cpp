@@ -9,10 +9,10 @@ void LoadMonitor::update(uint32_t a_busyMs, uint32_t a_idleMs) {
 
   if (m_sumBusyMs + m_sumIdleMs > m_intervalMs) {
     logCpuUsage();
-	  logRamUsage();
-	  Serial.println();
-	
-	  m_sumBusyMs = 0;
+    logRamUsage();
+    Serial.println();
+
+    m_sumBusyMs = 0;
     m_sumIdleMs = 0;
   }
 }
@@ -42,7 +42,7 @@ void LoadMonitor::logRamUsage() {
   Serial.print(F("% ("));
   Serial.print(totalRam - freeRam);
   Serial.print(F(" of "));
-  Serial.print(freeRam);
+  Serial.print(totalRam);
   Serial.print(F(" bytes)"));
 }
 
@@ -59,7 +59,7 @@ uint32_t LoadMonitor::getFreeRam() {
 
 constexpr uint32_t LoadMonitor::getTotalRam() {
   #ifdef RAMSTART && RAMEND
-    return RAMEND - RAMSTART;
+    return (RAMEND - RAMSTART) + 1;
   #else
     return 0;
   #endif
