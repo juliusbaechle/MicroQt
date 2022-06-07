@@ -5,5 +5,5 @@ int main() {
   testSignals();
   testTimers();
   testSynchronizer();
-  return 3;
+  return 0;
 }
