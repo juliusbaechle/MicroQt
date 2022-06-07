@@ -68,6 +68,7 @@ void setup() {
 }
 
 void loop() {
+  eventLoop.setLogIntervalMs(2000);  // 0 deactivates it
   eventLoop.exec();
 }
 ```
