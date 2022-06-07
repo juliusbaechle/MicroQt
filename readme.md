@@ -1,7 +1,6 @@
 # MicroQt Library 
-[![Unit Tests](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/main.yml)
-[![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml)
-[![Total Alerts](https://img.shields.io/lgtm/alerts/g/juliusbaechle/MicroQt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/juliusbaechle/MicroQt/alerts/)
+[![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml)
+[![Unit Tests](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml)
 [![Language Grade](https://img.shields.io/lgtm/grade/cpp/g/juliusbaechle/MicroQt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/juliusbaechle/MicroQt/context:cpp)
 
 Library that enables event driven applications on the Arduino platform. 
