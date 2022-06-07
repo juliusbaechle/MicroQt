@@ -78,9 +78,8 @@ void loop() {
 - Ask for enhancements
 - Create issues and pull requests
 - Tell others about this library
-- Contribute new protocols
 
-### Contributing Guidelines
+### Guidelines For Pull Requests And Issues 
  - Be friendly: It's my first public library and I've put in a lot of time and work, so please be patient.
  - Use reasonable titles: refrain from using overly long or capitalized titles
  - Be detailed: refrain from mentioning code problems without sharing your source code 
