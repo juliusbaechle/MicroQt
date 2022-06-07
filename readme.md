@@ -12,7 +12,7 @@ This is realized by load monitoring event loops, timers and signals similar to t
 1. In the Arduino IDE, navigate to Sketch > Include Library > Manage Libraries
 2. Then the Library Manager will open and you will find a list of libraries that are already installed or ready for installation.
 3. Then search for MicroQt using the search bar.
-4. Click on the text area and then select the specific version and install it.
+4. Click on the text area and then select the specific version and install it. 
 
 ### Second Method - Manual Installation
 1. Navigate to the [Releases page](https://github.com/juliusbaechle/MicroQt/releases).
