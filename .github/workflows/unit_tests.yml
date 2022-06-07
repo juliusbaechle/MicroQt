@@ -28,5 +28,5 @@ jobs:
 
     - name: Test
       working-directory: ${{github.workspace}}/build
-      run: ./MicroQt_Tests -C ${{env.BUILD_TYPE}}
+      run: ./MicroQt_Tests -C ${{env.BUILD_TYPE}}; exit $?
       
