@@ -12,7 +12,8 @@ uint32_t Signal<Args ...>::connect(function<void(Args ...)> a_func) {
   }
 
   uint32_t connectionId = m_lastConnectionId++;
-  while (m_connectionIds.contains(connectionId)) connectionId++;
+  while (m_connectionIds.contains(connectionId)) 
+    connectionId++;
 
   m_callbacks.append(a_func);
   m_connectionIds.append(connectionId);
