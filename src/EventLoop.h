@@ -16,6 +16,9 @@ namespace MicroQt {
 
     uint32_t registerTask(function<void()> a_function) { return m_taskUpdate.connect(a_function); }
     void unregisterTask(uint32_t a_connection) { return m_taskUpdate.disconnect(a_connection); }
+
+    // Setting this to 0 will deactivate the cpu and ram load logging
+    void setLogIntervalMs(uint32_t a_intervalMs = 0) { m_loadMonitor.setIntervalMs(a_intervalMs); }
     
   private:
     void update();

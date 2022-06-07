@@ -7,7 +7,7 @@ void Signal<Args ...>::operator()(Args ... a_params) {
 template<typename ... Args>
 uint32_t Signal<Args ...>::connect(function<void(Args ...)> a_func) {
   if (m_connectionIds.size() == UINT8_MAX) {
-    Serial.println("maximum connections reached");
+    Serial.println(F("maximum connections reached"));
     return 0;
   }
 

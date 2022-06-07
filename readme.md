@@ -32,7 +32,7 @@ This is realized by load monitoring event loops, timers and signals similar to t
   themselves, but you can also register your own tasks, such as polling for button state changes.
   In addition, you can enqueue events whose execution is delayed until the control returns to the event loop.
   Since they block the event loop, it is important that tasks and events can be processed quickly.
-  Every second, the event loop prints the CPU and RAM usage to get an overview of the current load.
+  The event loop may regularly print the CPU and RAM utilization to get an overview of the current load.
 
 - ### Timers
   Timers are used to call functions periodically or once after a specified interval. 

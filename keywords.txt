@@ -26,6 +26,7 @@ sglUpdate			KEYWORD2
 enqueueEvent		KEYWORD2
 registerTask		KEYWORD2
 unregisterTask		KEYWORD2
+setLogIntervalMs	KEYWORD2
 
 # LoadMonitor
 update				KEYWORD2

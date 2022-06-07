@@ -2,15 +2,17 @@
 #include <Arduino.h>
 
 void LoadMonitor::update(uint32_t a_busyMs, uint32_t a_idleMs) {
+  if (m_intervalMs == 0) return;
+
   m_sumBusyMs += a_busyMs;
   m_sumIdleMs += a_idleMs;
 
-  if (m_sumBusyMs + m_sumIdleMs > 1000) {
+  if (m_sumBusyMs + m_sumIdleMs > m_intervalMs) {
     logCpuUsage();
-	logRamUsage();
-	Serial.println();
+	  logRamUsage();
+	  Serial.println();
 	
-	m_sumBusyMs = 0;
+	  m_sumBusyMs = 0;
     m_sumIdleMs = 0;
   }
 }
@@ -22,11 +24,11 @@ void LoadMonitor::logCpuUsage() {
   Serial.print(F("%"));
   
   if(cpuPerc < 10) {
-	Serial.print(F("   "));
+	  Serial.print(F("   "));
   } else if(cpuPerc < 100) {
-	Serial.print(F("  "));
+	  Serial.print(F("  "));
   } else {
-	Serial.print(F(" "));
+	  Serial.print(F(" "));
   }
 }
 
@@ -35,7 +37,7 @@ void LoadMonitor::logRamUsage() {
   uint32_t freeRam = getFreeRam();
   if (totalRam == 0) return;
   
-  Serial.print(F("| RAM Usage: "));
+  Serial.print(F("| RAM Load: "));
   Serial.print((100 * (totalRam - freeRam)) / totalRam);
   Serial.print(F("% ("));
   Serial.print(totalRam - freeRam);
