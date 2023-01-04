@@ -1,7 +1,7 @@
 # MicroQt Library 
 [![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml)
 [![Unit Tests](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml)
-[![Language Grade](https://img.shields.io/lgtm/grade/cpp/g/juliusbaechle/MicroQt.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/juliusbaechle/MicroQt/context:cpp)
+[![CodeQL](https://github.com/juliusbaechle/MicroQt/actions/workflows/codeql.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/codeql.yml)
 
 Library that enables event driven applications on the Arduino platform. 
 This is realized by load monitoring event loops, timers and signals similar to those in the Qt framework.
