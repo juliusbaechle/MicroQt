@@ -1,7 +1,7 @@
 # MicroQt Library 
-[![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml)
-[![Unit Tests](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml)
-[![CodeQL](https://github.com/juliusbaechle/MicroQt/actions/workflows/codeql.yml/badge.svg)](https://github.com/juliusbaechle/MicroQt/actions/workflows/codeql.yml)
+[![Arduino Lint](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml/badge.svg?branch=master)](https://github.com/juliusbaechle/MicroQt/actions/workflows/arduino_lint.yml)
+[![Unit Tests](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml/badge.svg?branch=master)](https://github.com/juliusbaechle/MicroQt/actions/workflows/unit_tests.yml)
+[![CodeQL](https://github.com/juliusbaechle/MicroQt/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/juliusbaechle/MicroQt/actions/workflows/codeql.yml)
 
 Library that enables event driven applications on the Arduino platform. 
 This is realized by load monitoring event loops, timers and signals similar to those in the Qt framework.
